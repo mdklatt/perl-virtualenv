@@ -22,5 +22,5 @@ do {
     my $perl = catfile($bin, 'perl');
     ok(system($perl, '--version') == 0, 'perl');
     my $cpanm = catfile($bin, 'cpanm');
-    ok(system($cpanm, '--version') == 0, 'cpanm');  # FIXME: expected failure
+    ok(system($cpanm, '--version') == 0, 'cpanm');
 };

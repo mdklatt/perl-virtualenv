@@ -35,7 +35,9 @@ exec $perl -Mlocal::lib="$venv" "\$@"
 EOS
 chmod 0755, "$venv/bin/perl";
 
-my $cpanm = dirname($perl) . "/cpanm";
+# TODO: This finds the wrong cpanm if a virtualenv is active.
+my $cpanm = `which cpanm` or die "Unable to find 'cpanm' application";
+chomp $cpanm;
 spit "$venv/bin/cpanm", <<EOS;
 #!/bin/sh
 exec $cpanm --local-lib="$venv" "\$@"
